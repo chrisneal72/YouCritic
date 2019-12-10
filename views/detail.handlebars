@@ -1,0 +1,147 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-4 detail-cols">
+      <img src="https://image.tmdb.org/t/p/w500/{{movie.results.poster_path}}" height="400px">
+    </div>
+    <div class="col-xs-12 col-md-8 detail-cols">
+      <p class="details-text"><b>Title:</b> {{movie.results.title}}</p>
+      {{#if movie.results.runtime}}<p class="details-text"><b>Run Time:</b> {{movie.results.runtime}} mins</p>{{/if}}
+      <p class="details-text"><b>Release Date:</b> {{niceDate movie.results.release_date}}</p>
+      <p class="details-text"><b>Production Companies:</b> | {{#each movie.results.production_companies}}{{name}} |
+        {{/each}}</p>
+      <p class="details-text"><b>YouCritic Rating:</b> {{movie.rating}}</p>
+      <p class="details-text"><a href="#reviews"><b>(Reviews)</b></a></p>
+      <h2>Description:</h2>
+      <p>
+        {{movie.results.overview}}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <hr>
+    </div>
+  </div>
+  {{#if movie.video}}
+  <div class="row">
+    <div class="col detail-cols" align="center">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{movie.video.key}}" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <hr>
+    </div>
+  </div>
+  {{/if}}
+  {{#if movie.recommend}}
+  <div class="row">
+    <div class="col-1 m-auto slide-left">
+      <a class="arrow"><i class="fas fa-angle-left left-arrow"></i></a>
+    </div>
+    <div class="col-10 carousel-row-box align-items-center" id="0">
+      <div class="carousel dragscroll" id="slide-row-0">
+        <div class="carousel-row">
+          {{#each movie.recommend.results}}
+          <div class="carousel-tile">
+            <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="header image" data-id="{{id}}"
+              class="carousel-image">
+            <div>{{title}}<br>
+              {{niceDate release_date}}
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="col-1 m-auto slide-right">
+      <a class="arrow"><i class="fas fa-angle-right right-arrow"></i></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <hr>
+    </div>
+  </div>
+  {{/if}}
+  {{#if movie.review}}
+  <div id="reviews" class="row justify-content-center">
+    <div class="col-12">
+      <h2>Reviews:{{movie.review.results.desc}}</h2>
+      {{#each movie.review.reviews}}
+      <div class="row review-row">
+        <div class="col-8 offset-1">
+          <h2>{{name}}</h2>
+        </div>
+        <div class="col-2">
+          Rating: {{rating}}
+        </div>
+      </div>
+      <div class="row review-row-no-pad">
+        <div class="col-10 offset-1">
+          <hr>
+        </div>
+      </div>
+      <div class="row review-row">
+        <div class="col-10 offset-1">
+          {{desc}}
+        </div>
+      </div>
+      <hr>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+  <br>
+  {{#if movie.user}}
+  <form name="review-form" method="Post">
+    <div class="row">
+      <div class="col-8 offset-2 review-col">
+        <h2>Write a Review!</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 offset-2 review-col">
+        <h3>Reviewer's Name: {{movie.user}}</h3>
+      </div>
+      <div class="col-2 review-col">
+        <label>Your Rating:</label><br>
+        <select id="rating">
+          <option value="1">1</option>
+          <option value="1.5">1.5</option>
+          <option value="2">2</option>
+          <option value="2.5">2.5</option>
+          <option value="3">3</option>
+          <option value="3.5">3.5</option>
+          <option value="4">4</option>
+          <option value="4.5">4.5</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8 offset-2 review-col">
+        <label>Comments:</label><br>
+        <textarea id="review-text" class="text-input" placeholder="Type your review here"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8 offset-2 review-col">
+        <button type="submit" value="Submit" data-id={{movie.results.id}} class="btn" id="submitReview">Submit
+          Review</button>
+      </div>
+    </div>
+  </form>
+  {{else}}
+  <h2>Login or Register to Leave a Review</h2>
+  <div class="col-8 offset-2 review-col">
+    <button class="btn loginTrigger">Login</button>
+    <button class="btn registerTrigger">Register</button>
+  </div>
+  {{/if}}
+</div>
+<br>
+<br>

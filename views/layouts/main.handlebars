@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="shortcut icon" href="/images/movie.PNG" type="image/x-icon">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/f01e537613.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+  <link rel="stylesheet" type="text/css" href="/styles/carousel.css">
+  <title>YouCritic</title>
+</head>
+
+<body>
+  <div class="header-div">
+    <button class="btn loginButton loginTrigger">Login/Register</button>
+    <div class="my-auto">
+      <a href="/"><img src="/images/header-800.jpg" alt="header image" class="header-image">
+        <img src="/images/header-320.jpg" alt="header image" class="header-image-small"></a>
+      <form id="navbar-search" class="searchContainer" type="search" name="search" placeholder="Search Movies Here!"
+        method="POST">
+        <input type="search" name="search" placeholder="Search Movies...">
+        <div class="search"></div>
+      </form>
+    </div>
+  </div>
+  <div class="body-container-main">
+    <div class="my-auto">
+      {{{body}}}
+    </div>
+    {{> login}}
+    {{> register}}
+  </div>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="/js/slider.js"></script>
+  <script src="/js/indexwilliam.js"></script>
+
+</body>
+
+</html>
